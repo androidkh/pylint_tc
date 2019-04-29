@@ -1,15 +1,15 @@
-""" Simple program to count non space symbols in the file
-    Usage: python count_symbols.py <filename> <columns>
+_author_ = "Andrii Khaietskyi"
+_status_ = "Draft"
+_copyright_ = "Copyright 2019"
+
+"""
+Simple program to count non space symbols in the file
 """
 
 import re
 import sys
 
-_AUTHOR_ = "Andrii Khaietskyi"
-_STATUS_ = "Draft"
-_COPYRIGHT_ = "Copyright 2019"
-
-def load_file(filename):
+def load_file( filename ):
     try:
         text_file = open(filename, "r")
         lines = text_file.readlines()
@@ -19,18 +19,18 @@ def load_file(filename):
     except IOError:
         print "Error: File '" + filename + "'' doesn't exist or access denied"
 
-def count_symbols(lines):
+def count_symbols( lines ):
     symbols = {}
     for line in lines:
         for j in line:
-            if re.search(r"\S", j):   #ignore space symbols
+            if re.search("\S",j):   #ignore space symbols
                 if j in symbols:
                     symbols[j] += 1
                 else:
                     symbols[j] = 1
     return symbols
 
-def fancy_out(dict, columns):
+def fancy_out( dict, columns ):
     if not dict:
         print "File has no symbols"
     else:
